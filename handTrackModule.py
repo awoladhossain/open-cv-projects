@@ -37,12 +37,11 @@ class HandDetector:
                 cx, cy = int(lm.x * w), int(lm.y * h)
                 lm_list.append([id, cx, cy])
                 if draw:
-                    cv2.circle(img, (cx, cy), 5, (255, 0, 255), cv2.FILLED)
+                    cv2.circle(img, (cx, cy), 7, (255, 0, 255), cv2.FILLED)
         return lm_list
 
 def main():
     p_time = 0
-    c_time = 0
     cap = cv2.VideoCapture(0)
     detector = HandDetector()
 
@@ -51,7 +50,7 @@ def main():
         img = detector.find_hands(img)
         lm_list = detector.find_position(img)
         if len(lm_list) != 0:
-            print(lm_list[4])  # Print thumb tip position
+            print(lm_list[1])  # Print thumb tip position
 
         c_time = time.time()
         fps = 1 / (c_time - p_time)
